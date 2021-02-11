@@ -18,7 +18,7 @@ namespace LinkedLists
             Console.WriteLine(gll.Remove(5));
             Console.WriteLine(gll.Contains(5));
             Console.WriteLine(gll.IndexOf(5));
-            Console.WriteLine(gll.Count());
+            Console.WriteLine(gll.count);
             //int intVal = gll.GetFirstAdded();
             // The following line displays 5.
             // Console.WriteLine(intVal);

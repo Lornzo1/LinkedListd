@@ -6,12 +6,13 @@ namespace LinkedLists
 {
     public class GenericList<T> 
     {
+        
         private class Node
         {
             public Node Next;
             public T Data;
         }
-
+        public int count { get; private set; }
         private Node head = new Node();
         private Node tail;
         public void AddNode(T t)
@@ -29,6 +30,7 @@ namespace LinkedLists
                 newNode.Data = t;
                 tail = newNode;
             }
+            count += 1;
         }
 
         public bool Contains(T t) 
@@ -58,16 +60,13 @@ namespace LinkedLists
         {
             return RemoveAt(IndexOf(t));
         }
-        public int Count()
-        {
-            return IndexOf(tail.Data)+1;
-        }
         public string RemoveAt(int index)
         {
             Node current = head;
             if (index == 0)
             {
                 head = current.Next;
+                count -= 1;
             }
             else
             {
@@ -76,9 +75,37 @@ namespace LinkedLists
                     current = current.Next;
                 }
                 current.Next = (current.Next).Next;
+                count -= 1;
             }
             return "done";
         }
+        public void Clear()
+        {
+
+            tail = null;
+            head = null;
+
+            count = 0;
+        }
+        public T This (int index)
+        {
+            return GetNode(index).Data;
+        }
+
+        private Node GetNode(int index)
+        {
+            if (index > count) return null;
+            var current = tail;
+            int i = 0;
+            while (i < index)
+            {
+                i += 1;
+                current = current.Next;
+            }
+
+            return current;
+        }
+
     }
 }
 
