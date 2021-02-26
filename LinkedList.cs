@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-//using System.Text;
+﻿
 
 namespace LinkedLists
 {
-    public class GenericList<T> 
+    public class LinkedLists<T>
     {
-        
+
         private class Node
         {
             public Node Next;
@@ -21,7 +19,7 @@ namespace LinkedLists
             {
                 head.Next = head;
                 head.Data = t;
-                tail = head; 
+                tail = head;
             }
             else
             {
@@ -33,7 +31,7 @@ namespace LinkedLists
             count += 1;
         }
 
-        public bool Contains(T t) 
+        public bool Contains(T t)
         {
             if (IndexOf(t) != -1)
             {
@@ -87,7 +85,7 @@ namespace LinkedLists
 
             count = 0;
         }
-        public T This (int index)
+        public T This(int index)
         {
             return GetNode(index).Data;
         }
