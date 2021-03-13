@@ -15,43 +15,46 @@ namespace LinkedLists
                 this.data = data;
             }
         }
-        private List<TNode> positions = new List<TNode>();
         private TNode root = new TNode();
         public Tree(int[] numbers)
         {
             foreach (int i in numbers)
             {
-                TNode current;
-                TNode newTNode  = new TNode(i); 
-                current = root;
-                if (root.data == default)
+                insert(i);
+            }
+        }
+        public void insert(int i)
+        {
+            TNode current;
+            TNode newTNode = new TNode(i);
+            current = root;
+            if (root.data == default)
+            {
+                root.data = i;
+            }
+            else
+            {
+                do
                 {
-                    root.data = i;
-                }
-                else
-                {
-                    do
+                    if (current.data > i)
                     {
-                        if (current.data > i)
+                        if (current.NextL == null)
                         {
-                            if (current.NextL == null)
-                            {
-                                current.NextL = newTNode;
-                                break;
-                            }
-                            current = current.NextL;
+                            current.NextL = newTNode;
+                            break;
                         }
-                        else
+                        current = current.NextL;
+                    }
+                    else
+                    {
+                        if (current.NextR == null)
                         {
-                            if (current.NextR == null)
-                            {
-                                current.NextR = newTNode;
-                                break;
-                            }
-                            current = current.NextR;
+                            current.NextR = newTNode;
+                            break;
                         }
-                    } while (current.data != i);
-                }
+                        current = current.NextR;
+                    }
+                } while (current.data != i);
             }
         }
         public bool BinarySearch(int Nemo)
@@ -70,6 +73,36 @@ namespace LinkedLists
                 if (Dory == null) return false;
             }
             return true;
+        }
+        public void Preorder(TNode Root, int count = 0)
+        {
+            if (count == 0) Root = root;
+            if (Root != null)
+            {
+                Console.WriteLine(Root.data);
+                Preorder(Root.NextL, count = 1);
+                Preorder(Root.NextR, count = 1);
+            }
+        }
+        public void Inorder(TNode Root, int count = 0)
+        {
+            if (count == 0) Root = root;
+            if (Root != null)
+            {
+                Inorder(Root.NextL, count = 1);
+                Console.WriteLine(Root.data);
+                Inorder(Root.NextR, count = 1);
+            }
+        }
+        public void Postorder(TNode Root, int count = 0)
+        {
+            if (count == 0) Root = root;
+            if (Root != null)
+            {
+                Postorder(Root.NextL, count = 1);
+                Postorder(Root.NextR, count = 1);
+                Console.WriteLine(Root.data);
+            }
         }
     }
 }
