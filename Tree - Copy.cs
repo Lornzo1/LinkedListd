@@ -1,23 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-namespace LinkedLists
-{
-    class Graph
-    {
-        class Vertex<T>
-        {
-            private int index;
-            private T data;
-        }
-
-        class Graph<T>
-        {
-            List<Vertex<T>> vertices;
-            bool[][] edges = new bool[][];
-        }
-       
-             
+﻿        
         public bool BinarySearch(int Nemo)
         {
             TNode Dory = root;
