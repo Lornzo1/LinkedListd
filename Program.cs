@@ -21,15 +21,19 @@ namespace LinkedLists
             //int intVal = gll.GetFirstAdded();
             // The following line displays 5.
             // Console.WriteLine(intVal);*/
-            int[] a = { 8, 3, 10, 1, 6, 5, 18, 7, 12 };
+            char[] a = {'F','B','G','I','A','D','H','C','E'};
             Tree gll = new Tree(a);
-            Console.WriteLine(gll.BinarySearch(3));
-            Console.WriteLine(gll.BinarySearch(1));
-            Console.WriteLine(gll.BinarySearch(12));
-            Console.WriteLine(gll.BinarySearch(8));
-            Console.WriteLine(gll.BinarySearch(17));
-            Console.WriteLine(gll.BinarySearch(9));
-            Console.WriteLine(gll.BinarySearch(4));
+            Console.WriteLine(gll.BinarySearch('f'));
+            Console.WriteLine(gll.BinarySearch('F'));
+            Console.WriteLine(gll.BinarySearch('T'));
+            Console.WriteLine(gll.BinarySearch('H'));
+            gll.Remove('B');
+            Console.WriteLine(gll.BinarySearch('B'));
+            gll.Inorder();
+            Console.WriteLine();
+            gll.Postorder();
+            Console.WriteLine();
+            gll.Preorder();
         }
     }
 }
