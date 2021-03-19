@@ -30,6 +30,12 @@ namespace LinkedLists
             Console.WriteLine(gll.BinarySearch(17));
             Console.WriteLine(gll.BinarySearch(9));
             Console.WriteLine(gll.BinarySearch(4));
+            var adjMatrixGraph = new Graph(9, false);
+            adjMatrixGraph.AddEdge(0, 8);
+            adjMatrixGraph.AddEdge(0, 3);
+            adjMatrixGraph.AddEdge(8, 4);
+            var adjacent = adjMatrixGraph.GetAdjacentVertices(0);
+            foreach (int i in adjacent) Console.WriteLine(i);
         }
     }
 }
