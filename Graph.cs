@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Abstraction;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-// Goal: error messages implemented
 namespace LinkedLists
 {
     class Graph
@@ -54,6 +55,40 @@ namespace LinkedLists
         public int GetEdgeWeight(int v1, int v2)
         {
             return Matrix[v1, v2];
+        }
+        // for an unweighted path
+        public List<int> BreadthFirstTraversal(int start)
+        {
+            bool[] visited = new bool[NumVertices];
+            for (int i = 0; i < NumVertices; i++)
+                visited[i] = false;
+
+            queue<int> myQueue = new queue<int>(NumVertices);
+            List<int> path = new List<int>();
+            visited[start] = true;
+            myQueue.Push(start);
+
+            while (myQueue.head != 0)
+            {
+                int node = myQueue.Dequeue();
+
+                IEnumerable<int> adj = GetAdjacentVertices(start);
+
+                foreach (var val in adj)
+                {
+                    if (!visited[val])
+                    {
+                        visited[val] = true;
+                        myQueue.Push(val);
+                        path[val] = node;
+                    }
+                }
+            }
+            return path;
+        }
+        public List<int> DepthFirstTraversal(int start)
+        {
+
         }
     }
 }
