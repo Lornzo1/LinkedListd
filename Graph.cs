@@ -86,9 +86,23 @@ namespace LinkedLists
             }
             return path;
         }
-        public List<int> DepthFirstTraversal(int start)
+        public List<int> DepthFirstTraversal(int position)
         {
-
+            List<int> li = new List<int>();
+            bool[] visited = new bool[NumVertices];
+            if (visited[position]) 
+            {
+                li.Add(position) ;
+                return li;
+            }
+            visited[position] = true;
+            IEnumerable<int> adj = GetAdjacentVertices(position);
+            foreach (var next in adj)
+            {
+                DepthFirstTraversal(next);
+            }
+            li.Reverse();
+            return li;
         }
     }
 }
